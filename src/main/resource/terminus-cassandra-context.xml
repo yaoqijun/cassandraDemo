@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2015 杭州端点网络科技有限公司
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cassandra="http://www.springframework.org/schema/data/cassandra"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/cql http://www.springframework.org/schema/cql/spring-cql-1.0.xsd
+    http://www.springframework.org/schema/data/cassandra http://www.springframework.org/schema/data/cassandra/spring-cassandra-1.0.xsd
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+    <!-- The Cassandra Cluster -->
+    <cassandra:cluster contact-points="127.0.0.1" port="9042" />
+
+    <!-- The Cassandra Session, built from the Cluster, and attaching to a keyspace -->
+    <cassandra:session keyspace-name="terminus_data" />
+
+    <!-- The Default Cassandra Mapping Context used by CassandraConverter -->
+    <cassandra:mapping />
+
+    <!-- The Default Cassandra Converter used by CassandraTemplate -->
+    <cassandra:converter />
+
+    <!-- The Cassandra Template is the building block of all Spring Data Cassandra -->
+    <cassandra:template id="cassandraTemplate" />
+
+    <!-- Scan base package to use Spring Data Cassandra Repositories -->
+    <!--<cassandra:repositories base-package="io.terminus.neverest.config.cassandra" />-->
+
+</beans>

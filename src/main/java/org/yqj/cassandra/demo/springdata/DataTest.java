@@ -14,6 +14,7 @@ public class DataTest {
     public static void main(String[] args) {
         System.out.println("spring data test");
         AbstractApplicationContext context = new ClassPathXmlApplicationContext("terminus-cassandra-context.xml");
+        //CassandraTemplate cassandraTemplate = context.getBean(CassandraTemplate.class);
         CassandraOperations cassandraOperations = context.getBean(CassandraOperations.class);
         String sql ="insert into student (id , fname , lname ) VALUES ( 4, 'yao', 'jun');";
         cassandraOperations.execute(sql);

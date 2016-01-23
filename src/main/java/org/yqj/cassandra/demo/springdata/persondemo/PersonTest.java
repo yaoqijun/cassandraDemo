@@ -66,7 +66,7 @@ public class PersonTest {
     public static void testCassandraTimestamp(CassandraOperations cassandraOperations){
         //Shell  的显示可能不对
         Select select = QueryBuilder.select().from("person");
-        select.allowFiltering().where(QueryBuilder.gte("birth","2015-10-11")).and(QueryBuilder.lte("birth","2015-10-15"));
+        select.allowFiltering().where(QueryBuilder.gte("birth",FORMATTER.parseDateTime("2015-10-11").toDate())).and(QueryBuilder.lte("birth",FORMATTER.parseDateTime("2015-10-15").toDate()));
         System.out.println(select.toString());
         String sql = "SELECT * FROM person WHERE birth>='2015-10-11' AND birth<='2015-10-15' ALLOW FILTERING;";
         List<Person> persons = cassandraOperations.select(select.toString(),Person.class);
